@@ -10,7 +10,7 @@ var fake_redis = require('fakeredis');
 var mf = require('../lib/main');
 
 var client = fake_redis.createClient();
-mf.getClient = function() {
+mf.getClient = function () {
     return client;
 };
 
@@ -53,7 +53,6 @@ describe('meaningful', function () {
                 });
 
             });
-
         });
     });
 
@@ -76,22 +75,22 @@ describe('meaningful', function () {
             });
 
         });
-        it('should cope with duplicate values for different keys', function(done) {
-            mf.meaningful('a value','firstId', function(sanitized1) {
-                mf.meaningful('a value','secondId', function(sanitized2) {
+        it('should cope with duplicate values for different keys', function (done) {
+            mf.meaningful('a value', 'firstId', function (sanitized1) {
+                mf.meaningful('a value', 'secondId', function (sanitized2) {
                     sanitized2.should.not.eql(sanitized1);
                     done();
                 })
-            }) ;
+            });
         });
-        it('should allow old sanitized values to still work fine for same id', function(done) {
-            mf.meaningful('a first value','stillId', function(sanitized1) {
-                mf.meaningful('another value','stillId', function(sanitized2) {
-                    mf.idOfMeaningful(sanitized1, function(id) {
+        it('should allow old sanitized values to still work fine for same id', function (done) {
+            mf.meaningful('a first value', 'stillId', function (sanitized1) {
+                mf.meaningful('another value', 'stillId', function (sanitized2) {
+                    mf.idOfMeaningful(sanitized1, function (id) {
                         id.should.eql('stillId');
-                        mf.idOfMeaningful(sanitized2, function(id) {
+                        mf.idOfMeaningful(sanitized2, function (id) {
                             id.should.eql('stillId');
-                            mf.meaningful('a first value', 'reused', function(sanitized3) {
+                            mf.meaningful('a first value', 'reused', function (sanitized3) {
                                 sanitized3.should.not.eql(sanitized1);
                                 done();
                             })
@@ -99,7 +98,7 @@ describe('meaningful', function () {
 
                     });
                 })
-            }) ;
+            });
         });
     });
 });

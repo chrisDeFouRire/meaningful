@@ -14,6 +14,10 @@
         "should": "",
         "fakeredis": "*"
     },
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/chrisDeFouRire/meaningful.git"
+    },
     "scripts": {
         "test": "mocha test/*.js"
     },
