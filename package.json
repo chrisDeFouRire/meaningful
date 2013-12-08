@@ -1,0 +1,21 @@
+{
+    "name": "meaningful",
+    "version": "0.0.1",
+    "description": "Easy creation of urls segment from (String+Id)",
+    "main": "lib/main.js",
+    "directories": {
+        "test": "test"
+    },
+    "dependencies": {
+        "redis": "*"
+    },
+    "devDependencies": {
+        "mocha": "~1.15.1",
+        "should": ""
+    },
+    "scripts": {
+        "test": "mocha test/*.js"
+    },
+    "author": "Chris Hartwig <chris@chris-hartwig.com>",
+    "license": "MIT"
+}
