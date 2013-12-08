@@ -16,7 +16,8 @@ npm install meaningful
 var mf = require("meaningful");
 mf.meaningful('Chris Hartwig', 'id-0', function (sanitizedName) {
   // sanitizedName is now Chris-Harwig which you can use in an url
-}```
+}
+```
 
 Now imagine your rest api :
 
@@ -27,7 +28,8 @@ app.get("/photos/:user", function(req, res) {
   md.idOfMeaningful(sanitized, function(id) {
     // now you have your id
   }
-}```
+}
+```
 
 Does it support collisions? yes, you can have many "values" with different IDs (0-n will be prepended).
 
