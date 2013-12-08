@@ -1,11 +1,11 @@
 meaningful.js
 ==========
 
-This node.js module will help with /valid-path-params-3/just-like-that-4/ . With meaningful, it's easy to use meaningful path names instead of IDs.
+This node.js module will help with `/valid-path-params-3/just-like-that-4/` . With meaningful, it's easy to use meaningful path names instead of IDs.
 
 ## Permalink Problems: solved!
 
-Say you'd like to use permalinks like /photos/{userId}/{photoId}.jpg but you don't want to expose ids, because they're 
+Say you'd like to use permalinks like `/photos/{userId}/{photoId}.jpg` but you don't want to expose ids, because they're
 ugly and useless to search engines. Meaningful.js can help!
 
 ```
@@ -25,8 +25,8 @@ Now imagine your rest api :
 // the url contains the sanitizedName
 app.get("/photos/:user", function(req, res) {
   var sanitized = req.params.user; // sanitized == "Chris-Hartwig-amazing-user"
-  md.idOfMeaningful(sanitized, function(id) {
-    // now you have your id (same as myUserId
+  mf.idOfMeaningful(sanitized, function(id) {
+    // now you have your id (same as myUserId)
   }
 }
 ```
