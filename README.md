@@ -1,7 +1,7 @@
 meaningful.js
 ==========
 
-node.js module to help with /valid-path-params-3/just-like-this-4/ all of which are connected to IDs...
+This node.js module will help with /valid-path-params-3/just-like-that-4/ . With meaningful, it's easy to use meaningful path names instead of IDs.
 
 ## Permalink Problems: solved!
 
@@ -14,8 +14,8 @@ npm install meaningful
 
 ```JavaScript
 var mf = require("meaningful");
-mf.meaningful('Chris Hartwig', 'id-0', function (sanitizedName) {
-  // sanitizedName is now Chris-Harwig which you can use in an url
+mf.meaningful('Chris Hartwig / amazing user', myUserId, function (sanitizedName) {
+  // sanitizedName is now "Chris-Hartwig-amazing-user" which you can use in the url
 }
 ```
 
@@ -24,17 +24,37 @@ Now imagine your rest api :
 ```JavaScript
 // the url contains the sanitizedName
 app.get("/photos/:user", function(req, res) {
-  var sanitized = req.params.user;
+  var sanitized = req.params.user; // sanitized == "Chris-Hartwig-amazing-user"
   md.idOfMeaningful(sanitized, function(id) {
-    // now you have your id
+    // now you have your id (same as myUserId
   }
 }
 ```
 
-Does it support collisions? yes, you can have many "values" with different IDs (0-n will be prepended).
+Does it support collisions? yes, you can have many "values" with different IDs (automatic numerical suffix).
+So if another 'Chris Hartwig / amazing user' registers (with a different user id), his meaningful name will be Chris-Hartwig-amazing-user-1
 
-Does it support modifications? yes, you can change the user's name, but it will still work with the old name.
+Does it support modifications? yes, if 'Chris Hartwig / amazing user' changes to a less radical 'Chris Hartwig', the new and the old url will point to the same userId to avoid 404s.
 
 ## requirements
 
-The only dependency is for Redis... It is used to remember what should point to what...
+The only dependency is for Redis...
+
+You can customize the way you connect to Redis:
+
+```JavaScript
+var mf = require('meaningful');
+
+var client = md.createClient(myVerySpecialURL);
+mf.getClient = function () { // let's overload getClient
+    return client;
+};
+```
+
+## TODO's
+
+- [ ] Maybe I should add a real life example
+- [ ] There's no error handling at all
+- [ ] More tests are needed (mocha)
+- [ ] Someone should benchmark that thing
+
