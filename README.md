@@ -8,16 +8,20 @@ node.js module to help with /valid-path-params-3/just-like-this-4/ all of which 
 Say you'd like to use permalinks like /photos/{userId}/{photoId}.jpg but you don't want to expose ids, because they're 
 ugly and useless to search engines. Meaningful.js can help!
 
-```npm install meaningful```
+```
+npm install meaningful
+```
 
-```var mf = require("meaningful");
+```JavaScript
+var mf = require("meaningful");
 mf.meaningful('Chris Hartwig', 'id-0', function (sanitizedName) {
   // sanitizedName is now Chris-Harwig which you can use in an url
 }```
 
 Now imagine your rest api :
 
-```// the url contains the sanitizesName
+```JavaScript
+// the url contains the sanitizedName
 app.get("/photos/:user", function(req, res) {
   var sanitized = req.params.user;
   md.idOfMeaningful(sanitized, function(id) {
