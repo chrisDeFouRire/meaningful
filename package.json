@@ -18,6 +18,9 @@
         "type": "git",
         "url": "git://github.com/chrisDeFouRire/meaningful.git"
     },
+    "config": {
+        "redisprefix": "meaningful"
+    },
     "scripts": {
         "test": "mocha test/*.js"
     },
